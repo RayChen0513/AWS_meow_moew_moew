@@ -3,6 +3,10 @@ version: 0.2
 phases:
   build:
     commands:
+      - echo Using app.js
+      - cat app.js
+      - echo Using dockerfile
+      - cat dockerfile
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 711387134398.dkr.ecr.us-east-1.amazonaws.com
-      - docker build -t 711387134398.dkr.ecr.us-east-1.amazonaws.com/green-sun .
-      - docker push 711387134398.dkr.ecr.us-east-1.amazonaws.com/green-sun
+      - docker build -t 711387134398.dkr.ecr.us-east-1.amazonaws.com/green-sun:latest .
+      - docker push 711387134398.dkr.ecr.us-east-1.amazonaws.com/green-sun:latest
