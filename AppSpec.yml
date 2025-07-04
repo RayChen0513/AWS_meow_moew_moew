@@ -1,0 +1,23 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:711387134398:task-definition/meow-td:1"
+        LoadBalancerInfo:
+          ContainerName: "green-sun"
+          ContainerPort: 3000
+# Optional properties
+        PlatformVersion: "LATEST"
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets: ["subnet-037afc2d9e3a0c733","subnet-0287e7a53097984e5"]
+            SecurityGroups: ["sg-04e485d65728434a3"]
+            AssignPublicIp: "ENABLED"
+        CapacityProviderStrategy:
+          - Base: 1
+            CapacityProvider: "FARGATE_SPOT"
+            Weight: 2
+          - Base: 0
+            CapacityProvider: "FARGATE"
+            Weight: 1
