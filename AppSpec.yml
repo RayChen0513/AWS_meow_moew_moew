@@ -3,15 +3,15 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:us-east-1:711387134398:task-definition/meow-td:1"
+        TaskDefinition: "arn:aws:ecs:us-east-1:711387134398:task-definition/meow-td:2"
         LoadBalancerInfo:
-          ContainerName: "green-sun"
-          ContainerPort: 3000
+          ContainerName: "red-sun"
+          ContainerPort: 8080
 # Optional properties
         PlatformVersion: "LATEST"
         NetworkConfiguration:
           AwsvpcConfiguration:
-            Subnets: ["subnet-037afc2d9e3a0c733","subnet-0287e7a53097984e5"]
+            Subnets: ["subnet-09baef52ad1e5ed3d","subnet-0ffcec6002e5e48c4"]
             SecurityGroups: ["sg-04e485d65728434a3"]
             AssignPublicIp: "ENABLED"
         CapacityProviderStrategy:
